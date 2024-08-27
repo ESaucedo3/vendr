@@ -18,7 +18,6 @@ class ObservableAppState extends EventEmitter {
     new Snack({name: 'Butterfinger', price: 5.4, imgUrl: 'https://images.heb.com/is/image/HEBGrocery/000102790-1'}),
   ];
 
-  /**@type {Snack[]} */
   mySnacks = [];
 }
 

@@ -4,7 +4,7 @@ import {snacksService} from '../services/SnacksService.js';
 export class VendingController {
   constructor() {
     console.log('Vending Loaded');
-    // NOTE Will fire when coins in appstate changes
+    // NOTE Will fire when the following members in appstate changes
     this.drawSnackCards();
     AppState.on('money', this.drawSnackCards);
   }
@@ -28,11 +28,19 @@ export class VendingController {
     });
   }
 
+  drawPersonalSnackCard() {
+    const personalSnacks = AppState.mySnacks;
+    const stash = document.getElementById('personal-snacks');
+    stash.innerHTML = '';
+    personalSnacks.forEach((snack) => (stash.innerHTML += snack.generatePersonalSnackCard));
+  }
+
   addQuarter() {
     snacksService.addQuarter();
   }
 
   purchaseSnack(specificSnack) {
     snacksService.purchaseSnack(specificSnack);
+    this.drawPersonalSnackCard();
   }
 }

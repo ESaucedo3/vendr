@@ -3,6 +3,8 @@ export class Snack {
     this.name = data.name;
     this.price = data.price;
     this.imgUrl = data.imgUrl;
+    this.stock = data.stock;
+    this.quantity = 0;
   }
 
   get generateSnackCard() {
@@ -22,5 +24,17 @@ export class Snack {
               </div>
             </div>
           </div>`;
+  }
+
+  get generatePersonalSnackCard() {
+    return `<div class="col-3">
+                <div class="card">
+                  <img class="card-img-top" src="${this.imgUrl}" alt="Snack" />
+                  <div class="card-body bg-dark text-center text-light">
+                    <h5>${this.name}</h5>
+                    <p>x${this.quantity}</p>
+                  </div>
+                </div>
+              </div>`;
   }
 }
